@@ -1,0 +1,7 @@
+{
+  "name": "nn",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

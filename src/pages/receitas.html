@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <ion-header>
+        <ion-toolbar>
+          <ion-title>
+            Tabela
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card>
+                <ion-card-content>
+                  <ion-list>
+                    <ion-item *ngFor="let item of dados">
+                      {{ item.nome }} - {{ item.valor }}
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-content>
+</body>
+</html>
