@@ -64,7 +64,6 @@ const Receitas: React.FC = () => {
                 <IonLabel>
                   <h2 >{ item.name }
                   </h2>
-                  <h4>descrisao : <br />{  }</h4>
         <table>
           <tr>
             <th>
@@ -74,7 +73,6 @@ const Receitas: React.FC = () => {
             ></IonImg>
             </th>
             <th>
-             dd
             </th>
           </tr>
           <tr> 
@@ -88,7 +86,7 @@ const Receitas: React.FC = () => {
                 </IonLabel>
                 { Badge &&
                   <IonBadge slot="end" style={{ fontSize: "0.7rem" }}>
-                    {`${item.preco} preço`}
+                    {`${item.preco} €`}
                   </IonBadge>
                 }
 

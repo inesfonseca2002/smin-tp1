@@ -1,19 +1,51 @@
 import React from 'react';
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle,IonNavLink,IonButton, IonToolbar,IonSlides, IonSlide  } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle,IonNavLink,IonButton, IonToolbar,IonicSlides  } from '@ionic/react';
 import { useParams } from 'react-router';
+import { useEffect, useState } from "react";
 import ExploreContainer from '../components/ExploreContainer';
 import './Page.css';
+import {  IonList, IonItem, IonNote, IonLabel, IonBadge, IonModal, IonImg, IonIcon } from '@ionic/react';
+import { getInboxItems } from '../utils/util';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+
 import Receitas from './receitas';
 
-
+interface Recipe {
+  id: number;
+  name: string;
+  descrisao: string[];
+  dados: string[];
+  preco: string;
+  image: string;
+  loja:string;
+}
+interface page {
+  itemSelected: Recipe | null;
+  onClose: () => void;
+}
 const Page: React.FC = () => {
 
   const { name } = useParams<{ name: string; }>();
-  const slideOpts = {
-    initialSlide: 1,
-    speed: 400,
+
+  const [ Badge, setBadge ] = useState(true);
+  const [itemSelected, setItemSelected] = useState<Recipe| null>(null);
+
+  const inboxItems = getInboxItems();
+
+  const handleClickReceita = async (item : Recipe) => {
+    var pass ="";
+    setItemSelected(item)//useefect
+     // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${pass} times`;
+  });
+	}
+  const handleCloseModal = () => {
+    setItemSelected(null);
   };
-  
+
 
   return (
     <IonPage>
@@ -27,31 +59,37 @@ const Page: React.FC = () => {
       </IonHeader>
 
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+       
+
         <ExploreContainer name={name} />
         <h1>
           black friday
-        </h1>             <br /><br /><br /><br />
+        </h1>    
+        <Swiper
+       spaceBetween={50}
+       slidesPerView={3}
+       onSlideChange={() => console.log('slide change')}
+       onSwiper={(swiper) => console.log(swiper)}
+    >
+      <SwiperSlide>Slide 1</SwiperSlide>
+      <SwiperSlide>Slide 2</SwiperSlide>
+      <SwiperSlide>Slide 3</SwiperSlide>
+      {/* Adicione mais slides conforme necessário */}
+    </Swiper>
+        var c= {itemSelected?.id};
+
+       if (c==2 && c==4) {
+        <p>{itemSelected?.descrisao}</p>
+       }
+       
+             
+
+                
+   <br /><br /><br /><br />
         <h1>proximos carros</h1>
         <p>premios ganhos </p>
 
-        <IonContent>
-    <IonSlides pager={true} options={slideOpts}>
-      <IonSlide>
-        <h1>Slide 1</h1>
-      </IonSlide>
-      <IonSlide>
-        <h1>Slide 2</h1>
-      </IonSlide>
-      <IonSlide>
-        <h1>Slide 3</h1>
-      </IonSlide>
-    </IonSlides>
-  </IonContent>
+       
         <IonNavLink routerDirection="forward" component={() => <Receitas />}>
           <IonButton>aqui</IonButton>
         </IonNavLink>

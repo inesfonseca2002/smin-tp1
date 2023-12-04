@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { archiveOutline, fastFoodOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp, bodyOutline } from 'ionicons/icons';
+import { archiveOutline, carSport, storefront, homeSharp, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp, bodyOutline } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -25,20 +25,20 @@ const appPages: AppPage[] = [
   {
     title: 'inicio',
     url: '/page/inico',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: homeSharp,
+    mdIcon: homeSharp
   },
   {
     title: 'lojas',
     url: '/lojas',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
+    iosIcon: storefront,
+    mdIcon: storefront
   },
   {
     title: 'frota',
     url: '/Receitas',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp
+    iosIcon: carSport,
+    mdIcon: carSport
   },
 
 ];

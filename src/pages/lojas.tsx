@@ -3,7 +3,7 @@ import { checkmark } from 'ionicons/icons';
 import { useEffect, useState } from "react";
 import { getInboxItems } from '../utils/lojas';
 //import ReceitasDetailModal from './lojaDetailModal';
-import Receitas from './receitas';
+
 
 
 
@@ -15,7 +15,7 @@ interface Recipe {
     map: string;
 }
 
-const Receitas: React.FC = () => {
+const lojas: React.FC = () => {
 
   const [ Badge, setBadge ] = useState(true);
   const [itemSelected, setItemSelected] = useState<Recipe| null>(null);
@@ -47,7 +47,7 @@ const Receitas: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Receitas</IonTitle>
+          <IonTitle>lojas</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -66,7 +66,7 @@ const Receitas: React.FC = () => {
                   <h2>{ item.nome }
                   </h2>
                   <h4>{ item.morada }</h4>
-                  <IonNavLink routerDirection="forward" component={() => <Receitas />}>
+                  <IonNavLink >
           <IonButton>Go to Page Two</IonButton>
         </IonNavLink>
                 </IonLabel>
@@ -88,4 +88,4 @@ const Receitas: React.FC = () => {
   );
 };
 
-export default Receitas;
+export default lojas;
