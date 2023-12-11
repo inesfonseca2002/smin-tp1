@@ -55,7 +55,7 @@ const getInboxItems = (): Recipe[] => [
             "preco": "50",
             "prec":"10",
             "image": "https://garagem360.com.br/wp-content/uploads/2021/06/audi_rs_5_coupe_203-scaled.jpeg",
-            "loja":"teste"
+            "loja":"car rent porto"
 
         },
         {
@@ -77,7 +77,7 @@ const getInboxItems = (): Recipe[] => [
             "preco": "40",
             "prec":"10",
             "image": "https://ireland.apollo.olxcdn.com/v1/files/eyJmbiI6Imp4djNsdDJxNW9vLVNURFZUTFBUIn0.KQ1scCmbqUvb3fBi_BbfU7XJMAaRNinvILsmHzzW_-s/image;s=320x240",
-            "loja":"teste"
+            "loja":"car rent povoa de varzim"
         },
         {
             "id": 4,
@@ -98,9 +98,92 @@ const getInboxItems = (): Recipe[] => [
             "preco": "20",
             "prec":"10",
             "image": "https://cdn.autopapo.com.br/box/uploads/2021/01/16191145/ford-maverick-gt-v8-de-frente-fazendo-curva.jpg",
-            "loja":"teste"
+            "loja":"car rent braga"
         },
-        
+        {
+            "id": 5,
+            "name": "renult clio  ",
+            "descrisao": [
+            "4 lugares  / ",
+            "quilometragem ilimitada / ",
+            "5 malas / ",
+            "deposito cheio /  ",
+            "combustivel = gasoleo / ",
+            ],
+            "dados": [
+                "3 anos / ",
+                "motor tipo 2 /",
+                "tração todas / ",
+                "transmissão dianteira /"
+            ],
+            "preco": "35",
+            "prec":"10",
+            "image": "https://live.staticflickr.com/65535/48753266391_e2aacdd080_o.jpg",
+            "loja":"car rent povoa de varzim"
+        },
+        {
+            "id": 6,
+            "name": "bugatti chiron",
+            "descrisao": [
+            "2 lugares  / ",
+            "quilometragem ilimitada / ",
+            "1 malas / ",
+            "deposito cheio /  ",
+            "combustivel = gasolinha / ",
+            ],
+            "dados": [
+                "1 anos / ",
+                "motor tipo 1 /",
+                "tração traseira / ",
+                "transmissão automatica /"
+            ],
+            "preco": "70",
+            "prec":"10",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/FoS20162016_0624_132444AA_%2827785299372%29.jpg/1200px-FoS20162016_0624_132444AA_%2827785299372%29.jpg",
+            "loja":"car rent viana do castelo"
+        },
+        {
+            "id": 7,
+            "name": "jeep ault  ",
+            "descrisao": [
+            "2 lugares  / ",
+            "quilometragem ilimitada / ",
+            "2 malas / ",
+            "deposito cheio /  ",
+            "combustivel = eletrico / ",
+            ],
+            "dados": [
+                "4 anos / ",
+                "motor tipo 7 /",
+                "tração dianteira / ",
+                "transmissão automatica /"
+            ],
+            "preco": "30",
+            "prec":"10",
+            "image": "https://cdn.discordapp.com/attachments/990703697820545094/1183845210036387892/500-figurini-colorizer-Passion-Red-desktop-680x430_3.png?ex=6589d0c4&is=65775bc4&hm=ca8fc0c6949e2838668d57ad4a0112a9d142be3c9df31e986dba8ce5cfc0f406&",
+            "loja":"car rent braga"
+        },
+        {
+            "id": 8,
+            "name": "toyota yaris ",
+            "descrisao": [
+            "5 lugares  / ",
+            "quilometragem ilimitada / ",
+            "3 malas / ",
+            "deposito cheio /  ",
+            "combustivel = gasolinha / ",
+            ],
+            "dados": [
+                "3 anos / ",
+                "motor tipo 4 /",
+                "tração todas / ",
+                "transmissão manual /"
+            ],
+            "preco": "50",
+            "prec":"10",
+            "image": "https://d2v9mob6nwdg55.cloudfront.net/vo/imagenes/h_img_110_45150_2372800_1659088519.jpg",
+            "loja":"car rent viana do castelo"
+        },
     ];       
 
     export {getInboxItems};

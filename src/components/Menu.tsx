@@ -29,6 +29,12 @@ const appPages: AppPage[] = [
     mdIcon: homeSharp
   },
   {
+    title: 'home',
+    url: 'home',
+    iosIcon: homeSharp,
+    mdIcon: homeSharp
+  },
+  {
     title: 'lojas',
     url: '/lojas',
     iosIcon: storefront,
@@ -36,7 +42,7 @@ const appPages: AppPage[] = [
   },
   {
     title: 'frota',
-    url: '/Receitas',
+    url: '/Carros',
     iosIcon: carSport,
     mdIcon: carSport
   },

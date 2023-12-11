@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonModal, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonImg } from '@ionic/react';
 
-interface ReceitasDetailModalProps {
+interface CarrosDetailModalProps {
   itemSelected: Recipe | null;
   onClose: () => void;
 }
@@ -18,8 +18,9 @@ interface Recipe {
 
 
 
-const ReceitasDetailModal: React.FC<ReceitasDetailModalProps> = ({ itemSelected, onClose }) => {
+const CarrosDetailModal: React.FC<CarrosDetailModalProps> = ({ itemSelected, onClose }) => {
   return (
+    
     <IonModal isOpen={itemSelected !== null}>
       <IonHeader>
         <IonToolbar>
@@ -44,4 +45,4 @@ const ReceitasDetailModal: React.FC<ReceitasDetailModalProps> = ({ itemSelected,
   );
 };
 
-export default ReceitasDetailModal;
+export default CarrosDetailModal;

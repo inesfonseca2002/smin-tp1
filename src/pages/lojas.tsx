@@ -1,8 +1,10 @@
 import { IonButtons, IonContent, IonHeader,IonNavLink, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonNote, IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,IonThumbnail } from '@ionic/react';
 import { checkmark } from 'ionicons/icons';
 import { useEffect, useState } from "react";
-import { getInboxItems } from '../utils/lojas';
+import { getInboxItems } from '../utils/ulojas';
 //import ReceitasDetailModal from './lojaDetailModal';
+import { Link } from 'react-router-dom';
 
 
 
@@ -15,7 +17,7 @@ interface Recipe {
     map: string;
 }
 
-const lojas: React.FC = () => {
+const Lojas: React.FC = () => {
 
   const [ Badge, setBadge ] = useState(true);
   const [itemSelected, setItemSelected] = useState<Recipe| null>(null);
@@ -33,12 +35,13 @@ const lojas: React.FC = () => {
 	}
 
   const handleCloseModal = () => {
-    setItemSelected(null);//id receita esta feito ou nao
+    setItemSelected(null);
     
     <button>
        ver
     </button>
   };
+
 
   return (
     <IonPage>
@@ -47,7 +50,7 @@ const lojas: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>lojas</IonTitle>
+          <IonTitle>Lojas</IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -59,20 +62,52 @@ const lojas: React.FC = () => {
         </IonHeader>
         <IonList>
         { inboxItems.map((item, index) => {
+  const pi = item.nome;
 
             return (
-              <IonItem onClick={() => handleClickReceita(item)} key={ `item_${ index }`} detail={ true } lines="full" detailIcon={ checkmark }>
+              <IonItem onClick={() => handleClickReceita(item)} key={ `item_${ index }`} detail={ false } lines="full" >
                 <IonLabel>
-                  <h2>{ item.nome }
-                  </h2>
-                  <h4>{ item.morada }</h4>
-                  <IonNavLink >
-          <IonButton>Go to Page Two</IonButton>
-        </IonNavLink>
+                
+                  <IonCard>
+      <IonCardHeader>
+        <IonCardTitle> {item.nome}</IonCardTitle>
+       
+      </IonCardHeader>
+      
+      <IonCardContent>
+        <IonList>
+          <IonItem>
+            <IonThumbnail slot="start">
+            <IonImg
+                src={item.image}
+                alt="The Wisconsin State Capitol building in Madison, WI at night"
+            ></IonImg>
+            </IonThumbnail>
+            <IonLabel>cidade </IonLabel>
+          </IonItem>
+
+          <IonItem>
+            <IonThumbnail slot="start">
+            <IonImg
+                src={item.map}
+                alt="The Wisconsin State Capitol building in Madison, WI at night"
+            ></IonImg>
+            </IonThumbnail>
+            <IonLabel>mapa onde situa a loja </IonLabel>
+          </IonItem>
+          <IonCardSubtitle>{item.morada}</IonCardSubtitle>    
+
+           
+         
+          <IonButton>
+        <Link  to="/home">Ir para Outra Página</Link>
+      </IonButton>    
+        </IonList>
+      </IonCardContent>
+    </IonCard>
                 </IonLabel>
                 { Badge &&
                   <IonBadge slot="end" style={{ fontSize: "0.7rem" }}>
-                    {`${item.image} cidade `}
                   </IonBadge>
                 }
 
@@ -88,4 +123,4 @@ const lojas: React.FC = () => {
   );
 };
 
-export default lojas;
+export default Lojas;

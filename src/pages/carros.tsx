@@ -1,9 +1,13 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonNote, IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonMenuButton,IonPage, IonTitle, IonToolbar, IonList, IonItem, IonNote, IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
 import { checkmark } from 'ionicons/icons';
 import { useEffect, useState } from "react";
 import { getInboxItems } from '../utils/util';
-import ReceitasDetailModal from './ReceitasDetailModal';
+import CarrosDetailModal from './carrosDetailModal';
 import './receitas.css';
+
+import { pricetag } from 'ionicons/icons';
+
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 
 
 
@@ -18,7 +22,7 @@ interface Recipe {
 }
 
 
-const Receitas: React.FC = () => {
+const Carros: React.FC = () => {
 
   const [ Badge, setBadge ] = useState(true);
   const [itemSelected, setItemSelected] = useState<Recipe| null>(null);
@@ -38,7 +42,11 @@ const Receitas: React.FC = () => {
   const handleCloseModal = () => {
     setItemSelected(null);
   };
-
+ /* most(pi) {
+    // Navegar para a página Detalhes e passar os parâmetros usando queryParams
+  
+      };
+*/
   return (
     <IonPage>
       <IonHeader translucent={ true }>
@@ -60,46 +68,50 @@ const Receitas: React.FC = () => {
         { inboxItems.map((item, index) => {
 
             return (
-              <IonItem onClick={() => handleClickReceita(item)} key={ `item_${ index }`} detail={ true } lines="full" detailIcon={ checkmark }>
+              <IonItem onClick={() => handleClickReceita(item)} key={ `item_${ index }`} detail={ false } lines="full" >
                 <IonLabel>
-                  <h2 >{ item.name }
-                  </h2>
-        <table>
-          <tr>
-            <th>
-            <IonImg
-                src={item?.image}
+                  <IonCard>
+                  <IonImg
+                src={item.image}
                 alt="The Wisconsin State Capitol building in Madison, WI at night"
             ></IonImg>
-            </th>
-            <th>
-            </th>
-          </tr>
-          <tr> 
-          <th>descrisao</th>
-          </tr>
-          <tr>
-            <th> {item.descrisao}</th>
-          </tr>
-        </table>
-               
+      <IonCardHeader>
+        <IonCardTitle>{ item.name }</IonCardTitle>
+        <IonCardSubtitle>{item.descrisao}</IonCardSubtitle>
+        <IonIcon icon={pricetag}></IonIcon>
+        <IonCardHeader  >{item.preco} euros </IonCardHeader>
+      </IonCardHeader>
+
+      <IonCardContent></IonCardContent>
+    </IonCard>
+  
                 </IonLabel>
                 { Badge &&
                   <IonBadge slot="end" style={{ fontSize: "0.7rem" }}>
-                    {`${item.preco} €`}
+                   
                   </IonBadge>
                 }
+                  {item?.name === 'car rent porto' && (
+  <IonCard>
+    <IonImg src={item?.image} alt="The Wisconsin State Capitol building in Madison, WI at night" />
+    <IonCardHeader>
+      <IonCardTitle>{item?.name}</IonCardTitle>
+      <IonCardSubtitle>{item?.descrisao}</IonCardSubtitle>
+      <IonCardHeader>{item?.preco} euros </IonCardHeader>
+    </IonCardHeader>
+    <IonCardContent></IonCardContent>
+  </IonCard>
+)}
 
-                
               </IonItem>
             );
             })}
         </IonList>
       </IonContent>
 
-      <ReceitasDetailModal itemSelected={itemSelected} onClose={handleCloseModal} />
+      < CarrosDetailModal itemSelected={itemSelected} onClose={handleCloseModal} />
     </IonPage>
   );
 };
 
-export default Receitas;
+export default Carros;
