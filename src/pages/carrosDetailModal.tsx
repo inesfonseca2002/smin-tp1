@@ -2,7 +2,7 @@ import React from 'react';
 import { IonModal, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonImg } from '@ionic/react';
 
 interface CarrosDetailModalProps {
-  itemSelected: Recipe | null;
+  carselected: Recipe | null;
   onClose: () => void;
 }
 
@@ -18,28 +18,28 @@ interface Recipe {
 
 
 
-const CarrosDetailModal: React.FC<CarrosDetailModalProps> = ({ itemSelected, onClose }) => {
+const CarrosDetailModal: React.FC<CarrosDetailModalProps> = ({ carselected, onClose }) => {
   return (
     
-    <IonModal isOpen={itemSelected !== null}>
+    <IonModal isOpen={carselected !== null}>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{itemSelected?.name}</IonTitle>
+          <IonTitle>{carselected?.name}</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={onClose}>Fechar</IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <p>{itemSelected?.dados}</p>
+        <p>{carselected?.dados}</p>
         <IonImg
-                src={itemSelected?.image}
+                src={carselected?.image}
                 alt="The Wisconsin State Capito/l building in Madison, WI at night"
             ></IonImg>
-        <p>{itemSelected?.loja}</p>
+        <p>{carselected?.loja}</p>
       </IonContent>
       <IonButtons slot="end">
-            {/* <IonButton onClick={ () => itemSelected?.done = true}>feito </IonButton> */}
+            {/* <IonButton onClick={ () => carselected?.done = true}>feito </IonButton> */}
           </IonButtons>
     </IonModal>
   );

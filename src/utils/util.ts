@@ -12,7 +12,7 @@ interface Recipe {
 
 }
 
-const getInboxItems = (): Recipe[] => [
+const getInboxcars = (): Recipe[] => [
     {
             "id": 1,
             "name": "BMW_x5",
@@ -186,4 +186,4 @@ const getInboxItems = (): Recipe[] => [
         },
     ];       
 
-    export {getInboxItems};
+    export {getInboxcars};

@@ -1,8 +1,8 @@
 import { IonButtons, IonContent, IonHeader,IonNavLink, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonNote, IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,IonThumbnail } from '@ionic/react';
-import { checkmark } from 'ionicons/icons';
+import { checkmark, pieChart } from 'ionicons/icons';
 import { useEffect, useState } from "react";
-import { getInboxItems } from '../utils/ulojas';
+import { getInboxloja } from '../utils/ulojas';
 //import ReceitasDetailModal from './lojaDetailModal';
 import { Link } from 'react-router-dom';
 
@@ -10,23 +10,25 @@ import { Link } from 'react-router-dom';
 
 
 interface Recipe {
-    id: number;
-    nome:string;
-    image: string;
-    morada: string;
-    map: string;
+  id: number;
+  nome:string;
+  image: string;
+  morada: string;
+  map: string;
+  lat:string;
+  long:string;
 }
 
 const Lojas: React.FC = () => {
 
   const [ Badge, setBadge ] = useState(true);
-  const [itemSelected, setItemSelected] = useState<Recipe| null>(null);
+  const [lojaSelected, setlojaSelected] = useState<Recipe| null>(null);
 
-  const inboxItems = getInboxItems();
+  const inboxlojas = getInboxloja();
 
-  const handleClickReceita = async (item : Recipe) => {
+  const handleClickReceita = async (loja : Recipe) => {
     var pass ="";
-    setItemSelected(item)//useefect
+    setlojaSelected(loja)//useefect
      // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     // Update the document title using the browser API
@@ -35,7 +37,7 @@ const Lojas: React.FC = () => {
 	}
 
   const handleCloseModal = () => {
-    setItemSelected(null);
+    setlojaSelected(null);
     
     <button>
        ver
@@ -44,6 +46,9 @@ const Lojas: React.FC = () => {
 
 
   return (
+
+ 
+
     <IonPage>
       <IonHeader translucent={ true }>
         <IonToolbar>
@@ -61,16 +66,17 @@ const Lojas: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-        { inboxItems.map((item, index) => {
-  const pi = item.nome;
+          
+        { inboxlojas.map((loja: Recipe, index: any) => {
+  const pi = loja.nome;
 
             return (
-              <IonItem onClick={() => handleClickReceita(item)} key={ `item_${ index }`} detail={ false } lines="full" >
+              <IonItem onClick={() => handleClickReceita(loja)} key={ `loja_${ index }`} detail={ false } lines="full" >
                 <IonLabel>
                 
                   <IonCard>
       <IonCardHeader>
-        <IonCardTitle> {item.nome}</IonCardTitle>
+        <IonCardTitle> {loja.nome}</IonCardTitle>
        
       </IonCardHeader>
       
@@ -79,7 +85,7 @@ const Lojas: React.FC = () => {
           <IonItem>
             <IonThumbnail slot="start">
             <IonImg
-                src={item.image}
+                src={loja.image}
                 alt="The Wisconsin State Capitol building in Madison, WI at night"
             ></IonImg>
             </IonThumbnail>
@@ -89,18 +95,16 @@ const Lojas: React.FC = () => {
           <IonItem>
             <IonThumbnail slot="start">
             <IonImg
-                src={item.map}
+                src={loja.map}
                 alt="The Wisconsin State Capitol building in Madison, WI at night"
             ></IonImg>
             </IonThumbnail>
             <IonLabel>mapa onde situa a loja </IonLabel>
           </IonItem>
-          <IonCardSubtitle>{item.morada}</IonCardSubtitle>    
-
-           
+          <IonCardSubtitle>{loja.morada}</IonCardSubtitle>   
          
-          <IonButton>
-        <Link  to="/home">Ir para Outra Página</Link>
+          <IonButton >
+          <Link to={`/carros/${pi}`}>Ir para a página de Carros</Link>
       </IonButton>    
         </IonList>
       </IonCardContent>

@@ -1,7 +1,7 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton,IonPage, IonTitle, IonToolbar, IonList, IonItem, IonNote, IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonMenuButton,IonPage, IonTitle, IonToolbar, IonList, IonNote, IonItem,IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
 import { checkmark } from 'ionicons/icons';
 import { useEffect, useState } from "react";
-import { getInboxItems } from '../utils/util';
+import { getInboxcars } from '../utils/util';
 import CarrosDetailModal from './carrosDetailModal';
 import './receitas.css';
 
@@ -25,13 +25,13 @@ interface Recipe {
 const Carros: React.FC = () => {
 
   const [ Badge, setBadge ] = useState(true);
-  const [itemSelected, setItemSelected] = useState<Recipe| null>(null);
+  const [carselected, setcarselected] = useState<Recipe| null>(null);
+  
+  const inboxcars = getInboxcars();
 
-  const inboxItems = getInboxItems();
-
-  const handleClickReceita = async (item : Recipe) => {
+  const handleClickReceita = async (car : Recipe) => {
     var pass ="";
-    setItemSelected(item)//useefect
+    setcarselected(car)//useefect
      // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     // Update the document title using the browser API
@@ -40,7 +40,7 @@ const Carros: React.FC = () => {
 	}
 
   const handleCloseModal = () => {
-    setItemSelected(null);
+    setcarselected(null);
   };
  /* most(pi) {
     // Navegar para a página Detalhes e passar os parâmetros usando queryParams
@@ -65,21 +65,21 @@ const Carros: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-        { inboxItems.map((item, index) => {
+        { inboxcars.map((car: Recipe, index: any) => {
 
             return (
-              <IonItem onClick={() => handleClickReceita(item)} key={ `item_${ index }`} detail={ false } lines="full" >
+              <IonItem onClick={() => handleClickReceita(car)} key={ `car_${ index }`} detail={ false } lines="full" >
                 <IonLabel>
                   <IonCard>
                   <IonImg
-                src={item.image}
+                src={car.image}
                 alt="The Wisconsin State Capitol building in Madison, WI at night"
             ></IonImg>
       <IonCardHeader>
-        <IonCardTitle>{ item.name }</IonCardTitle>
-        <IonCardSubtitle>{item.descrisao}</IonCardSubtitle>
+        <IonCardTitle>{ car.name }</IonCardTitle>
+        <IonCardSubtitle>{car.descrisao}</IonCardSubtitle>
         <IonIcon icon={pricetag}></IonIcon>
-        <IonCardHeader  >{item.preco} euros </IonCardHeader>
+        <IonCardHeader  >{car.preco} euros </IonCardHeader>
       </IonCardHeader>
 
       <IonCardContent></IonCardContent>
@@ -91,13 +91,13 @@ const Carros: React.FC = () => {
                    
                   </IonBadge>
                 }
-                  {item?.name === 'car rent porto' && (
+                  {car?.name === 'car rent porto' && (
   <IonCard>
-    <IonImg src={item?.image} alt="The Wisconsin State Capitol building in Madison, WI at night" />
+    <IonImg src={car?.image} alt="The Wisconsin State Capitol building in Madison, WI at night" />
     <IonCardHeader>
-      <IonCardTitle>{item?.name}</IonCardTitle>
-      <IonCardSubtitle>{item?.descrisao}</IonCardSubtitle>
-      <IonCardHeader>{item?.preco} euros </IonCardHeader>
+      <IonCardTitle>{car?.name}</IonCardTitle>
+      <IonCardSubtitle>{car?.descrisao}</IonCardSubtitle>
+      <IonCardHeader>{car?.preco} euros </IonCardHeader>
     </IonCardHeader>
     <IonCardContent></IonCardContent>
   </IonCard>
@@ -109,7 +109,7 @@ const Carros: React.FC = () => {
         </IonList>
       </IonContent>
 
-      < CarrosDetailModal itemSelected={itemSelected} onClose={handleCloseModal} />
+      < CarrosDetailModal carselected={carselected} onClose={handleCloseModal} />
     </IonPage>
   );
 };
