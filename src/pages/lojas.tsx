@@ -39,9 +39,7 @@ const Lojas: React.FC = () => {
   const handleCloseModal = () => {
     setlojaSelected(null);
     
-    <button>
-       ver
-    </button>
+  
   };
 
 
@@ -103,9 +101,7 @@ const Lojas: React.FC = () => {
           </IonItem>
           <IonCardSubtitle>{loja.morada}</IonCardSubtitle>   
          
-          <IonButton >
-          <Link to={`/carros/${pi}`}>Ir para a página de Carros</Link>
-      </IonButton>    
+         
         </IonList>
       </IonCardContent>
     </IonCard>

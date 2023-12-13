@@ -75,10 +75,10 @@ const Home: React.FC = () => {
         <IonButton id="meuBotao2" color="primary"onClick={() => setShowCard2(!showCard2)}>
           <IonLabel>car rent viana do castelo</IonLabel>
         </IonButton>
-        <IonButton id="meuBotao3" color="primary"onClick={() => setShowCard(!showCard3)}>
+        <IonButton id="meuBotao3" color="primary"onClick={() => setShowCard3(!showCard3)}>
           <IonLabel>car rent braga</IonLabel>
         </IonButton>
-        <IonButton id="meuBotao3" color="primary"onClick={() => setShowCard(!showCard4)}>
+        <IonButton id="meuBotao3" color="primary"onClick={() => setShowCard4(!showCard4)}>
           <IonLabel>car rent povoa de varzim</IonLabel>
         </IonButton>
   

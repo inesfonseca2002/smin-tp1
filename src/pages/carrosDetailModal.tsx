@@ -31,11 +31,13 @@ const CarrosDetailModal: React.FC<CarrosDetailModalProps> = ({ carselected, onCl
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <p>{carselected?.dados}</p>
         <IonImg
                 src={carselected?.image}
                 alt="The Wisconsin State Capito/l building in Madison, WI at night"
             ></IonImg>
+                    <h5>dados do veiculo</h5>
+        <p>{carselected?.dados}</p>
+        <h5>loja que tem o carro</h5>
         <p>{carselected?.loja}</p>
       </IonContent>
       <IonButtons slot="end">

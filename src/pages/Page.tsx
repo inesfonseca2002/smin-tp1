@@ -2,7 +2,7 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import {  IonList, IonItem, IonNote, IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/react';
 import 'swiper/css';
 import '@ionic/react/css/ionic-swiper.css';
 import { useEffect, useState } from "react";
@@ -74,7 +74,7 @@ const Page: React.FC = () => {
         <p>{itemSelected.preco}</p>
        }
        <br /><br />
-       <h1>proximos carros</h1> <br /><br />
+       <h1 >proximos carros</h1> <br /><br />
           <Swiper>
           <SwiperSlide><img src="https://cdn.discordapp.com/attachments/990703697820545094/1184176710409789490/pontiac_2.png?ex=658b0580&is=65789080&hm=153637afe4f59ddc0e094d54066949fc3d38f07b69a0d331b22367742d1148b0&" alt="erro" /></SwiperSlide>
           <SwiperSlide><img src="https://cdn.discordapp.com/attachments/990703697820545094/1184176709780656128/pontiac_1.png?ex=658b0580&is=65789080&hm=9059e6c49341ebfb093cbca207f024ad108ce6c511391bf88d3b5e8a2dff800c&" alt="" /></SwiperSlide>
@@ -82,16 +82,30 @@ const Page: React.FC = () => {
           </Swiper>
               <br /><br /><br /><br />
         <h1>premios ganhos</h1> 
-       <table>
-        <tr>
-          <td><img src="https://www.pngall.com/wp-content/uploads/5/Gold-Trophy-PNG-Image.png" alt="erro" />Carro do Ano na Europa</td>
-          <td><img src="https://i.pinimg.com/originals/4f/94/46/4f94467fd40da7cc76e2a5afe9467034.png" alt="erro" />Carro do Ano Mundial</td>
-        </tr>
-        <tr>
-          <td><img src="https://ae01.alicdn.com/kf/H825dfe7dc5c74cbb94f58342ac3292c4E.jpg_640x640Q90.jpg_.webp" alt="erro" />Carro Verde do Ano</td>
-          <td><img src="https://p.turbosquid.com/ts-thumb/8O/WzDmNM/1C/f12020formula1grandprixtrophy3dmodel001/jpg/1671656565/600x600/fit_q87/33997264a3a6adb114cd26c05b035cc240c12d68/f12020formula1grandprixtrophy3dmodel001.jpg" alt="erro" />Os 10 Melhores Motores e Sistemas de Propulsão da Wards</td>
-          </tr>
-       </table>
+        <IonCard>
+      <img alt="Silhouette of mountains" src="https://www.pngall.com/wp-content/uploads/5/Gold-Trophy-PNG-Image.png" />
+      <IonCardHeader>
+        <IonCardTitle>Carro do Ano na Europa</IonCardTitle>
+      </IonCardHeader>
+    </IonCard>
+    <IonCard>
+      <img alt="Silhouette of mountains" src="https://i.pinimg.com/originals/4f/94/46/4f94467fd40da7cc76e2a5afe9467034.png" />
+      <IonCardHeader>
+        <IonCardTitle>Carro do Ano Mundial</IonCardTitle>
+      </IonCardHeader>
+    </IonCard>
+    <IonCard>
+      <img alt="Silhouette of mountains" src="https://ae01.alicdn.com/kf/H825dfe7dc5c74cbb94f58342ac3292c4E.jpg_640x640Q90.jpg_.webp" />
+      <IonCardHeader>
+        <IonCardTitle>Carro Verde do Ano</IonCardTitle>
+      </IonCardHeader>
+    </IonCard>
+    <IonCard>
+      <img alt="Silhouette of mountains" src="https://p.turbosquid.com/ts-thumb/8O/WzDmNM/1C/f12020formula1grandprixtrophy3dmodel001/jpg/1671656565/600x600/fit_q87/33997264a3a6adb114cd26c05b035cc240c12d68/f12020formula1grandprixtrophy3dmodel001.jpg" />
+      <IonCardHeader>
+        <IonCardTitle>Os 10 Melhores Motores e Sistemas de Propulsão da Wards</IonCardTitle>
+      </IonCardHeader>
+    </IonCard>
 
      <h2>loja +prox</h2>
    

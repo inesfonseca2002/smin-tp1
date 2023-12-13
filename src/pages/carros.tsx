@@ -78,8 +78,8 @@ const Carros: React.FC = () => {
       <IonCardHeader>
         <IonCardTitle>{ car.name }</IonCardTitle>
         <IonCardSubtitle>{car.descrisao}</IonCardSubtitle>
-        <IonIcon icon={pricetag}></IonIcon>
-        <IonCardHeader  >{car.preco} euros </IonCardHeader>
+       
+        <IonCardHeader  > {car.preco} euros por dia</IonCardHeader>
       </IonCardHeader>
 
       <IonCardContent></IonCardContent>
