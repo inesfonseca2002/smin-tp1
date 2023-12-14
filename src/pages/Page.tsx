@@ -25,12 +25,15 @@ interface Recipe {
 const Page: React.FC = () => {
 
   const { name } = useParams<{ name: string; }>();
+  const [coord, setCoord] = useState<string| null>(null);
+
+
   const printCurrentPosition = async () => {
     const coordinates = await Geolocation.getCurrentPosition();
-  
+    setCoord(coordinates.coords.latitude.toString().concat(" - ", coordinates.coords.latitude.toString()));
     console.log('Current position:', coordinates);
   };
-  
+  printCurrentPosition();
   const [ Badge, setBadge ] = useState(true);
   const [itemSelected, setItemSelected] = useState<Recipe| null>(null);
 
@@ -108,7 +111,7 @@ const Page: React.FC = () => {
     </IonCard>
 
      <h2>loja +prox</h2>
-   
+   <h2>{coord}</h2>
       </IonContent>
     </IonPage>
   );
