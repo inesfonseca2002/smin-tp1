@@ -86,12 +86,12 @@ const Lojas: React.FC = () => {
   const pi = loja.nome;
 
             return (
-              <IonItem onClick={() => handleClickReceita(loja)} key={ `loja_${ index }`} detail={ false } lines="full" >
+              <IonItem onClick={() => handleClickReceita(setlojaSelected)} key={ `loja_${ index }`} detail={ false } lines="full" >
                 <IonLabel>
                 
                   <IonCard>
       <IonCardHeader>
-        <IonCardTitle> {loja.nome}</IonCardTitle>
+        <IonCardTitle> {setlojaSelected.}</IonCardTitle>
        
       </IonCardHeader>
       
