@@ -20,8 +20,25 @@ interface Recipe {
 }
 
 const Lojas: React.FC = () => {
+  const [Badge, setBadge]= useState (true);
+  const [lojaSelected, setlojaSelected] = useState<Recipe| null>(null);
+  const [carros,setcarros]= useState<Recipe[]>([]);
+  useEffect(() =>{
+    const fetchlojas=async ()=>{
+      try{
+        const response =await fetch('');
+        const data =await response.json();
+        setcarros(data);
+      }catch (error){
+        console.error(`erro ao buscar lojas `)
+      };
+      
+    };
 
-  const [ Badge, setBadge ] = useState(true);
+    fetchlojas();
+  },[]);
+
+  /*const [ Badge, setBadge ] = useState(true);
   const [lojaSelected, setlojaSelected] = useState<Recipe| null>(null);
 
   const inboxlojas = getInboxloja();
@@ -41,7 +58,7 @@ const Lojas: React.FC = () => {
     
   
   };
-
+*/
 
   return (
 
