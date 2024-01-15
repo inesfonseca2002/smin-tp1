@@ -1,4 +1,4 @@
-import { beerOutline, golfOutline, pulseOutline, restaurantOutline } from "ionicons/icons";
+/*import { beerOutline, golfOutline, pulseOutline, restaurantOutline } from "ionicons/icons";
 
 interface Recipe {
     id: number;
@@ -49,4 +49,4 @@ const getInboxloja = (): Recipe[] => [
         },
     ];       
 
-    export {getInboxloja};
+    export {getInboxloja};*/

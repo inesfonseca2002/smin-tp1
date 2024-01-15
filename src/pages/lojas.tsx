@@ -2,8 +2,7 @@ import { IonButtons, IonContent, IonHeader, IonNavLink, IonMenuButton, IonPage, 
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonThumbnail } from '@ionic/react';
 import { checkmark, pieChart } from 'ionicons/icons';
 import { useEffect, useState } from "react";
-import { getInboxloja } from '../utils/ulojas';
-//import ReceitasDetailModal from './lojaDetailModal';
+//import { getInboxloja } from '../utils/ulojas';
 import { Link } from 'react-router-dom';
 
 
@@ -21,14 +20,14 @@ interface Recipe {
 
 const Lojas: React.FC = () => {
   const [Badge, setBadge] = useState(true);
-  const [lojaSelected, setlojaSelected] = useState<Recipe | null>(null);
-  const [carros, setcarros] = useState<Recipe[]>([]);
+  const [lojaSelected, setlojaSelected] = useState<Recipe[]>([]);
+  
   useEffect(() => {
     const fetchlojas = async () => {
       try {
         const response = await fetch('http://localhost:8080/api/lojas');
         const data = await response.json();
-        setcarros(data);
+        setlojaSelected(data);
       } catch (error) {
         console.error(`erro ao buscar lojas `)
       };
@@ -82,7 +81,7 @@ const Lojas: React.FC = () => {
         </IonHeader>
         <IonList>
 
-          {carros.map((loja: Recipe, index: any) => {
+          {lojaSelected.map((loja: Recipe, index: any) => {
             const pi = loja.nome;
 
             return (
