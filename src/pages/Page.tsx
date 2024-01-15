@@ -6,7 +6,7 @@ import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle }
 import 'swiper/css';
 import '@ionic/react/css/ionic-swiper.css';
 import { useEffect, useState } from "react";
-import { getInboxcars } from '../utils/util';
+//import { getInboxcars } from '../utils/util';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Page.css';
@@ -37,7 +37,7 @@ const Page: React.FC = () => {
   const [ Badge, setBadge ] = useState(true);
   const [itemSelected, setItemSelected] = useState<Recipe| null>(null);
 
-  const inboxItems = getInboxcars();
+  //const inboxItems = getInboxcars();
   const handleClickReceita = async (item : Recipe) => {
     var pass ="";
     setItemSelected(item)//useefect

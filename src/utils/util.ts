@@ -1,3 +1,4 @@
+/*
 import { beerOutline, golfOutline, pulseOutline, restaurantOutline } from "ionicons/icons";
 
 interface Recipe {
@@ -186,4 +187,4 @@ const getInboxcars = (): Recipe[] => [
         },
     ];       
 
-    export {getInboxcars};
+    export {getInboxcars};*/

@@ -1,7 +1,7 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton,IonPage, IonTitle, IonToolbar, IonList, IonNote, IonItem,IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
 import { checkmark } from 'ionicons/icons';
 import { useEffect, useState } from "react";
-import { getInboxcars } from '../utils/util';
+//import { getInboxcars } from '../utils/util';
 import CarrosDetailModal from './carrosDetailModal';
 import './receitas.css';
 
@@ -23,11 +23,29 @@ interface Recipe {
 
 
 const Carros: React.FC = () => {
+  const [Badge, setBadge] = useState(true);
+  const [lojaSelected, setlojaSelected] = useState<Recipe | null>(null);
+  const [carros, setcarros] = useState<Recipe[]>([]);
+  useEffect(() => {
+    const fetchcarros = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/carros');
+        const data = await response.json();
+        setcarros(data);
+      } catch (error) {
+        console.error(`erro ao buscar lojas `)
+      };
 
-  const [ Badge, setBadge ] = useState(true);
+    };
+
+    fetchcarros();
+  }, []);
+
+
+
   const [carselected, setcarselected] = useState<Recipe| null>(null);
   
-  const inboxcars = getInboxcars();
+  //const inboxcars = getInboxcars();
 
   const handleClickReceita = async (car : Recipe) => {
     var pass ="";
@@ -42,11 +60,7 @@ const Carros: React.FC = () => {
   const handleCloseModal = () => {
     setcarselected(null);
   };
- /* most(pi) {
-    // Navegar para a página Detalhes e passar os parâmetros usando queryParams
-  
-      };
-*/
+
   return (
     <IonPage>
       <IonHeader translucent={ true }>
@@ -65,7 +79,7 @@ const Carros: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-        { inboxcars.map((car: Recipe, index: any) => {
+        { carros.map((car: Recipe, index: any) => {
 
             return (
               <IonItem onClick={() => handleClickReceita(car)} key={ `car_${ index }`} detail={ false } lines="full" >

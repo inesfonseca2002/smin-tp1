@@ -1,5 +1,5 @@
-import { IonButtons, IonContent, IonHeader,IonNavLink, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonNote, IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,IonThumbnail } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonNavLink, IonMenuButton, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonNote, IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonThumbnail } from '@ionic/react';
 import { checkmark, pieChart } from 'ionicons/icons';
 import { useEffect, useState } from "react";
 import { getInboxloja } from '../utils/ulojas';
@@ -11,32 +11,32 @@ import { Link } from 'react-router-dom';
 
 interface Recipe {
   id: number;
-  nome:string;
+  nome: string;
   image: string;
   morada: string;
   map: string;
-  lat:string;
-  long:string;
+  lat: string;
+  long: string;
 }
 
 const Lojas: React.FC = () => {
-  const [Badge, setBadge]= useState (true);
-  const [lojaSelected, setlojaSelected] = useState<Recipe| null>(null);
-  const [carros,setcarros]= useState<Recipe[]>([]);
-  useEffect(() =>{
-    const fetchlojas=async ()=>{
-      try{
-        const response =await fetch('');
-        const data =await response.json();
+  const [Badge, setBadge] = useState(true);
+  const [lojaSelected, setlojaSelected] = useState<Recipe | null>(null);
+  const [carros, setcarros] = useState<Recipe[]>([]);
+  useEffect(() => {
+    const fetchlojas = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/lojas');
+        const data = await response.json();
         setcarros(data);
-      }catch (error){
+      } catch (error) {
         console.error(`erro ao buscar lojas `)
       };
-      
+
     };
 
     fetchlojas();
-  },[]);
+  }, []);
 
   /*const [ Badge, setBadge ] = useState(true);
   const [lojaSelected, setlojaSelected] = useState<Recipe| null>(null);
@@ -51,7 +51,7 @@ const Lojas: React.FC = () => {
     // Update the document title using the browser API
     document.title = `You clicked ${pass} times`;
   });
-	}
+  }
 
   const handleCloseModal = () => {
     setlojaSelected(null);
@@ -62,10 +62,10 @@ const Lojas: React.FC = () => {
 
   return (
 
- 
+
 
     <IonPage>
-      <IonHeader translucent={ true }>
+      <IonHeader translucent={true}>
         <IonToolbar>
           <IonButtons slot="start">
             <IonMenuButton />
@@ -81,61 +81,63 @@ const Lojas: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-          
-        { inboxlojas.map((loja: Recipe, index: any) => {
-  const pi = loja.nome;
+
+          {carros.map((loja: Recipe, index: any) => {
+            const pi = loja.nome;
 
             return (
-              <IonItem onClick={() => handleClickReceita(setlojaSelected)} key={ `loja_${ index }`} detail={ false } lines="full" >
+              <IonItem detail={false} lines="full" >
                 <IonLabel>
-                
-                  <IonCard>
-      <IonCardHeader>
-        <IonCardTitle> {setlojaSelected.}</IonCardTitle>
-       
-      </IonCardHeader>
-      
-      <IonCardContent>
-        <IonList>
-          <IonItem>
-            <IonThumbnail slot="start">
-            <IonImg
-                src={loja.image}
-                alt="The Wisconsin State Capitol building in Madison, WI at night"
-            ></IonImg>
-            </IonThumbnail>
-            <IonLabel>cidade </IonLabel>
-          </IonItem>
 
-          <IonItem>
-            <IonThumbnail slot="start">
-            <IonImg
-                src={loja.map}
-                alt="The Wisconsin State Capitol building in Madison, WI at night"
-            ></IonImg>
-            </IonThumbnail>
-            <IonLabel>mapa onde situa a loja </IonLabel>
-          </IonItem>
-          <IonCardSubtitle>{loja.morada}</IonCardSubtitle>   
-         
-         
-        </IonList>
-      </IonCardContent>
-    </IonCard>
+                  <IonCard>
+                    <IonCardHeader>
+                      <IonCardTitle> {pi}</IonCardTitle>
+
+                    </IonCardHeader>
+
+                    <IonCardContent>
+                      <IonList>
+                        <IonItem>
+                          <IonThumbnail slot="start">
+                            <IonImg
+                              src={loja.image}
+                              alt="The Wisconsin State Capitol building in Madison, WI at night"
+                            ></IonImg>
+                          </IonThumbnail>
+                          <IonLabel>{loja.morada} </IonLabel>
+                        </IonItem>
+
+                        <IonItem>
+                          <IonThumbnail slot="start">
+                            <IonImg
+                              src={loja.map}
+                              alt="The Wisconsin State Capitol building in Madison, WI at night"
+                            ></IonImg>
+                          </IonThumbnail>
+                          <IonLabel>mapa onde situa a loja </IonLabel>
+                        </IonItem>
+                        <IonCardSubtitle>{loja.morada}</IonCardSubtitle>
+
+
+                      </IonList>
+                    </IonCardContent>
+                  </IonCard>
                 </IonLabel>
-                { Badge &&
+                {Badge &&
                   <IonBadge slot="end" style={{ fontSize: "0.7rem" }}>
                   </IonBadge>
                 }
 
-            
+
               </IonItem>
-            );
-            })}
+
+            )
+          }
+        )};
         </IonList>
       </IonContent>
 
-    
+
     </IonPage>
   );
 };

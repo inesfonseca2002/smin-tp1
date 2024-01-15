@@ -1,7 +1,7 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton,IonPage, IonTitle, IonToolbar, IonList, IonItem, IonNote, IonLabel, IonBadge, IonModal, IonButton, IonImg, IonIcon } from '@ionic/react';
 import { checkmark } from 'ionicons/icons';
 import { useEffect, useState } from "react";
-import { getInboxcars } from '../utils/util';
+//import { getInboxcars } from '../utils/util';
 import { IonSelect, IonSelectOption } from '@ionic/react';
 
 import './receitas.css';
@@ -19,22 +19,41 @@ interface Recipe {
   dados: string[];
   preco: string;
   image: string;
-  loja:string;
+  codlojas:string;
 }
 
 
 const Home: React.FC = () => {
+  const [Badge, setBadge] = useState(true);
+  const [lojaSelected, setlojaSelected] = useState<Recipe | null>(null);
+  const [carros, setcarros] = useState<Recipe[]>([]);
+  useEffect(() => {
+    const fetchlcarros = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/carros');
+        const data = await response.json();
+        setcarros(data);
+      } catch (error) {
+        console.error(`erro ao buscar carros `)
+      };
 
+    };
+
+    fetchlcarros();
+  }, []);
+  
+  const [showCard, setShowCard] = useState(false);
+
+  const [showCard2, setShowCard2] = useState(false);
+  
+  const [showCard3, setShowCard3] = useState(false);
+  
+  const [showCard4, setShowCard4] = useState(false);
+  
+/*
   const [ Badge, setBadge ] = useState(true);
   const [carlogSelected, setcarlogSelected] = useState<Recipe| null>(null);
-  const [showCard, setShowCard] = useState(false);
-  const inboxcarlogs = getInboxcars();
-  const [showCard2, setShowCard2] = useState(false);
-  const inboxcarlogs2 = getInboxcars();
-  const [showCard3, setShowCard3] = useState(false);
-  const inboxcarlogs3 = getInboxcars();
-  const [showCard4, setShowCard4] = useState(false);
-  const inboxcarlogs4 = getInboxcars();
+
   const handleClickReceita = async (carlog : Recipe) => {
     var pass ="";
     setcarlogSelected(carlog)//useefect
@@ -48,7 +67,7 @@ const Home: React.FC = () => {
   const handleCloseModal = () => {
     setcarlogSelected(null);
   };
- 
+ */
   return (
     
     <IonPage>
@@ -82,10 +101,10 @@ const Home: React.FC = () => {
           <IonLabel>car rent povoa de varzim</IonLabel>
         </IonButton>
   
-        {inboxcarlogs.map((carlog, index) => (
-          <IonItem onClick={() => handleClickReceita(carlog)} key={`carlog_${index}`} detail={false} lines="full">
+        {carros.map((carlog, index) => (
+          <IonItem  detail={false} lines="full">
             <IonLabel>
-              {showCard  && carlog?.loja === 'car rent porto' && (
+              {showCard  && carlog?.codlojas === 'car rent porto' && (
                 <IonCard>
                   <IonImg src={carlog?.image} alt="The Wisconsin State Capitol building in Madison, WI at night" />
                   <IonCardHeader>
@@ -96,7 +115,7 @@ const Home: React.FC = () => {
                   <IonCardContent></IonCardContent>
                 </IonCard>
               )}
-               {showCard2  && carlog?.loja === 'car rent viana do castelo' && (
+               {showCard2  && carlog?.codlojas === 'car rent viana do castelo' && (
                 <IonCard>
                   <IonImg src={carlog?.image} alt="The Wisconsin State Capitol building in Madison, WI at night" />
                   <IonCardHeader>
@@ -107,7 +126,7 @@ const Home: React.FC = () => {
                   <IonCardContent></IonCardContent>
                 </IonCard>
               )}
-               {showCard3  && carlog?.loja === 'car rent braga' && (
+               {showCard3  && carlog?.codlojas === 'car rent braga' && (
                 <IonCard>
                   <IonImg src={carlog?.image} alt="The Wisconsin State Capitol building in Madison, WI at night" />
                   <IonCardHeader>
@@ -118,7 +137,7 @@ const Home: React.FC = () => {
                   <IonCardContent></IonCardContent>
                 </IonCard>
               )}
-               {showCard4  && carlog?.loja === 'car rent povoa de varzim' && (
+               {showCard4  && carlog?.codlojas === 'car rent povoa de varzim' && (
                 <IonCard>
                   <IonImg src={carlog?.image} alt="The Wisconsin State Capitol building in Madison, WI at night" />
                   <IonCardHeader>
